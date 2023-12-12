@@ -1,7 +1,16 @@
+using BankSystem.DataAccess.Repository;
+using BankSystem.DataAccess.Repository.IRepository;
+using BankSystemApp.DataAcces.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IClientRepository,ClientRepository>();
+
+
 
 var app = builder.Build();
 

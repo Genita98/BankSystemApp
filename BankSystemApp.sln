@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystemApp", "BankSystemApp\BankSystemApp.csproj", "{D2FFCC70-ACF1-4DD2-9074-F940763E2A98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystemApp", "BankSystemApp\BankSystemApp.csproj", "{D2FFCC70-ACF1-4DD2-9074-F940763E2A98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.DataAccess", "BankSystem.DataAccess\BankSystem.DataAccess.csproj", "{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.Models", "BankSystem.Models\BankSystem.Models.csproj", "{672857F2-76C7-476F-A807-C42779E4A146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.Utilities", "BankSystem.Utilities\BankSystem.Utilities.csproj", "{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{D2FFCC70-ACF1-4DD2-9074-F940763E2A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2FFCC70-ACF1-4DD2-9074-F940763E2A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2FFCC70-ACF1-4DD2-9074-F940763E2A98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672857F2-76C7-476F-A807-C42779E4A146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672857F2-76C7-476F-A807-C42779E4A146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672857F2-76C7-476F-A807-C42779E4A146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672857F2-76C7-476F-A807-C42779E4A146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

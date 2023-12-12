@@ -1,0 +1,53 @@
+﻿@model List<Client>
+<partial name="_Notifications" />
+
+<div class="container">
+    <div class="row pt-4 pb-4">
+        <div class="col-6">
+            <h2 class="text-primary">Clients</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Client" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create</a>
+        </div>
+
+    </div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>    
+
+         <th>Client name</th>
+         <th>Surname</th>
+         <th>Address</th>
+         <th>Phone number</th>
+         <th>Email</th>
+         <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+         <tr>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.Address</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Email</td>
+            <td>
+                <div class="btn-group w-75" role="group" >
+                            <a asp-controller="Client" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2">Edit <i class="bi bi-pencil-square"></i> </a>
+                            <a class="btn btn-danger mx-2" asp-controller="Client" asp-action="Delete" asp-route-id="@item.Id">Delete <i class="bi bi-trash"></i> </a>
+
+                </div>
+
+            </td>
+
+         </tr>
+            
+        }
+
+
+    </tbody>
+
+</table>
+</div>
