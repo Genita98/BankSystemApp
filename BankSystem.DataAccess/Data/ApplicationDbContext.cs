@@ -14,9 +14,25 @@ namespace BankSystemApp.DataAcces.Data
 
         public DbSet<CurrentAccount> CurrentAccount { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{ 
-        //}
+        public DbSet<Deposit> Deposit { get; set; }
+
+        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Client>().HasData(
+                new Client
+                {
+                    IdCardClient = 11111111,
+                    Name = "Bank",
+                    Surname = "Account",
+                    Email = "bankaccount@gmail.com",
+                    Address = "Prishtine",
+                    PhoneNumber = "+38344111222"
+                }
+                );
+            
+
+        }
+
 
 
     }

@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace BankSystem.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateAndSeedEverything : Migration
+    public partial class CreateEverythingAndSeedTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,9 +32,7 @@ namespace BankSystem.DataAccess.Migrations
                 name: "CurrentAccount",
                 columns: table => new
                 {
-                    IdAccount = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CurrentAccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CurrentAccountNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AccountBalance = table.Column<double>(type: "float", nullable: false),
                     Reservations = table.Column<double>(type: "float", nullable: false),
                     Valuta = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -41,7 +40,7 @@ namespace BankSystem.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CurrentAccount", x => x.IdAccount);
+                    table.PrimaryKey("PK_CurrentAccount", x => x.CurrentAccountNumber);
                     table.ForeignKey(
                         name: "FK_CurrentAccount_Clients_IdCardClient",
                         column: x => x.IdCardClient,
@@ -50,15 +49,49 @@ namespace BankSystem.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Deposit",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CurrentAccountNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Deposit", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Deposit_CurrentAccount_CurrentAccountNumber",
+                        column: x => x.CurrentAccountNumber,
+                        principalTable: "CurrentAccount",
+                        principalColumn: "CurrentAccountNumber",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "IdCardClient", "Address", "Email", "Name", "PhoneNumber", "Surname" },
+                values: new object[] { 11111111, "Prishtine", "bankaccount@gmail.com", "Bank", "+38344111222", "Account" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CurrentAccount_IdCardClient",
                 table: "CurrentAccount",
                 column: "IdCardClient");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Deposit_CurrentAccountNumber",
+                table: "Deposit",
+                column: "CurrentAccountNumber");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Deposit");
+
             migrationBuilder.DropTable(
                 name: "CurrentAccount");
 

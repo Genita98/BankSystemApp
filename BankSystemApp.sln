@@ -5,11 +5,16 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystemApp", "BankSystemApp\BankSystemApp.csproj", "{D2FFCC70-ACF1-4DD2-9074-F940763E2A98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.DataAccess", "BankSystem.DataAccess\BankSystem.DataAccess.csproj", "{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.DataAccess", "BankSystem.DataAccess\BankSystem.DataAccess.csproj", "{E970EBD7-0BC0-4644-A7AD-F35D3EA7C0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.Models", "BankSystem.Models\BankSystem.Models.csproj", "{672857F2-76C7-476F-A807-C42779E4A146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.Models", "BankSystem.Models\BankSystem.Models.csproj", "{672857F2-76C7-476F-A807-C42779E4A146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankSystem.Utilities", "BankSystem.Utilities\BankSystem.Utilities.csproj", "{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankSystem.Utilities", "BankSystem.Utilities\BankSystem.Utilities.csproj", "{A5425EAB-90DE-44F6-A806-10D9E6B74DFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12E4F036-E672-4BD5-9254-5901E8349293}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

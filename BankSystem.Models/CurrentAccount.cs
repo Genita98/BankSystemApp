@@ -11,8 +11,8 @@ namespace BankSystem.Models
 {
     public class CurrentAccount
     {
+        
         [Key]
-        public int IdAccount { get; set; }
         public string CurrentAccountNumber { get; set; }  
         public double AccountBalance { get; set; }    
         public double Reservations { get; set; }
@@ -20,6 +20,7 @@ namespace BankSystem.Models
         [DisplayName("Id Card")]
         public int IdCardClient { get; set; }
         [ForeignKey("IdCardClient")]
-        public Client ?Client { get; set; }  
+        public Client ?Client { get; set; }
+
     }
 }

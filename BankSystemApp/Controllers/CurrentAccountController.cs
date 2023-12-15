@@ -49,24 +49,18 @@ namespace BankSystemApp.Controllers
 
 
 
-        public IActionResult Edit(int? Id)
+        public IActionResult Edit(string? Id)
         {
-            if (Id == null || Id == 0)
+            if (Id == null || Id == "")
             {
                 return NotFound();
             }
 
-            CurrentAccount currentAccountFromDb = _IUnitOFWork.CurrentAccount.Get(u => u.IdAccount == Id);
+            CurrentAccount currentAccountFromDb = _IUnitOFWork.CurrentAccount.Get(u => u.CurrentAccountNumber == Id);
             if (currentAccountFromDb == null)
             {
                 return NotFound();
             }
-            IEnumerable<SelectListItem> ClientList = _IUnitOFWork.Client.GetAll().Select(u => new SelectListItem
-            {
-                Text = u.IdCardClient.ToString(),
-                Value = u.IdCardClient.ToString()
-            });
-            ViewBag.ClientList = ClientList;
             return View(currentAccountFromDb);
         }
 
@@ -91,14 +85,14 @@ namespace BankSystemApp.Controllers
         //delete part
 
 
-        public IActionResult Delete(int? Id)
+        public IActionResult Delete(string? Id)
         {
-            if (Id == null || Id == 0)
+            if (Id == null || Id == "")
             {
                 return NotFound();
             }
 
-            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.IdAccount == Id);
+            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.CurrentAccountNumber == Id);
             if (currentAccount == null)
             {
                 return NotFound();
@@ -108,14 +102,14 @@ namespace BankSystemApp.Controllers
 
         [HttpPost, ActionName("Delete")]
 
-        public IActionResult DeletePOST(int? Id)
+        public IActionResult DeletePOST(string? Id)
         {
-            if (Id == null || Id == 0)
+            if (Id == null || Id == "")
             {
                 return NotFound();
             }
 
-            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.IdAccount == Id);
+            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.CurrentAccountNumber == Id);
 
             if (currentAccount == null)
             {
