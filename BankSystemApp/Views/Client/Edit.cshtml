@@ -8,6 +8,11 @@
             <hr/>
         </div>
         <div class="mb-3 row">
+            <label class="p-0" asp-for="IdCardClient"></label>
+            <input asp-for="IdCardClient" class="form-control" />
+            <span asp-validation-for="IdCardClient" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
             <label class="p-0" asp-for="Name"></label>
             <input asp-for="Name" class="form-control"/>
             <span asp-validation-for="Name" class="text-danger"></span>

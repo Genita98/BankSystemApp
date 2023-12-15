@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 
 namespace BankSystem.DataAccess.Repository
 {
-    public class ClientRepository : Repository<Client>, IClientRepository 
+    public class CurrentAccountRepository : Repository<CurrentAccount>, ICurrentAccountRepository
     {
         private ApplicationDbContext _db;
 
-        public  ClientRepository(ApplicationDbContext db) : base(db)  
+        public CurrentAccountRepository (ApplicationDbContext db) : base(db)  
         {
             _db = db;   
         }
 
 
 
-        public void Update(Client obj)
+        public void Update(CurrentAccount obj)
         {
-            _db.Clients.Update(obj);
+            _db.CurrentAccount.Update(obj);
         }
 
         

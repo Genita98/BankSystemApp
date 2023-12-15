@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BankSystem.DataAccess.Repository.IRepository
 {
-     public interface IClientRepository : IRepository <Client>
+     public interface ICurrentAccountRepository : IRepository <CurrentAccount>
     {
-        void Update(Client obj);
+        void Update(CurrentAccount obj);
 
     }
 }

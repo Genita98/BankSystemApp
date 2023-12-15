@@ -5,8 +5,11 @@ namespace BankSystem.Models
 {
     public class Client
     {
+        
         [Key]
-        public int Id { get; set; }
+        [DisplayName("Id Card")]
+        public int IdCardClient { get; set; } 
+
         [Required]
         [DisplayName("Client name")]
         [MaxLength(30)]

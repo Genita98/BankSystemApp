@@ -1,5 +1,4 @@
-﻿using BankSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace BankSystem.DataAccess.Repository.IRepository
 {
-     public interface IClientRepository : IRepository <Client>
+    public interface IUnitOfWork
     {
-        void Update(Client obj);
+        IClientRepository Client { get;  }
+        ICurrentAccountRepository CurrentAccount { get; }
+
+        void Save();
 
     }
 }

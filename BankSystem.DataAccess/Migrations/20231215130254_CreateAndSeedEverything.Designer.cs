@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankSystem.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231211184359_AddCategoryToDbAndSeedTable")]
-    partial class AddCategoryToDbAndSeedTable
+    [Migration("20231215130254_CreateAndSeedEverything")]
+    partial class CreateAndSeedEverything
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace BankSystem.DataAccess.Migrations
 
             modelBuilder.Entity("BankSystem.Models.Client", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdCardClient")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCardClient"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -53,29 +53,52 @@ namespace BankSystem.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdCardClient");
 
                     b.ToTable("Clients");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Gjilan",
-                            Email = "genitaaa98@gmail.com",
-                            Name = "Genita",
-                            PhoneNumber = "045513622",
-                            Surname = "Azizi"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "Gjilan",
-                            Email = "greta.azizi@gmail.com",
-                            Name = "Greta",
-                            PhoneNumber = "045683797",
-                            Surname = "Azizi"
-                        });
+            modelBuilder.Entity("BankSystem.Models.CurrentAccount", b =>
+                {
+                    b.Property<int>("IdAccount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAccount"));
+
+                    b.Property<double>("AccountBalance")
+                        .HasColumnType("float");
+
+                    b.Property<string>("CurrentAccountNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdCardClient")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Reservations")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Valuta")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdAccount");
+
+                    b.HasIndex("IdCardClient");
+
+                    b.ToTable("CurrentAccount");
+                });
+
+            modelBuilder.Entity("BankSystem.Models.CurrentAccount", b =>
+                {
+                    b.HasOne("BankSystem.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("IdCardClient")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
                 });
 #pragma warning restore 612, 618
         }

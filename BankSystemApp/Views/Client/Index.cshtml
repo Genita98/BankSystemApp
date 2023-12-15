@@ -11,16 +11,17 @@
         </div>
 
     </div>
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped text-center">
     <thead>
-        <tr>    
+        <tr>
 
+         <th>Id Card</th>
          <th>Client name</th>
          <th>Surname</th>
          <th>Address</th>
          <th>Phone number</th>
          <th>Email</th>
-         <th></th>
+         <th>Actions</th>
         </tr>
     </thead>
 
@@ -28,6 +29,7 @@
         @foreach (var item in Model)
         {
          <tr>
+             <td>@item.IdCardClient</td>
             <td>@item.Name</td>
             <td>@item.Surname</td>
             <td>@item.Address</td>
@@ -35,8 +37,8 @@
             <td>@item.Email</td>
             <td>
                 <div class="btn-group w-75" role="group" >
-                            <a asp-controller="Client" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2">Edit <i class="bi bi-pencil-square"></i> </a>
-                            <a class="btn btn-danger mx-2" asp-controller="Client" asp-action="Delete" asp-route-id="@item.Id">Delete <i class="bi bi-trash"></i> </a>
+                            <a asp-controller="Client" asp-action="Edit" asp-route-id="@item.IdCardClient" class="btn btn-primary mx-2">Edit <i class="bi bi-pencil-square"></i> </a>
+                            <a class="btn btn-danger mx-2" asp-controller="Client" asp-action="Delete" asp-route-id="@item.IdCardClient">Delete <i class="bi bi-trash"></i> </a>
 
                 </div>
 

@@ -1,0 +1,51 @@
+﻿@model List<CurrentAccount>
+<partial name="_Notifications" />
+
+<div class="container">
+    <div class="row pt-4 pb-4">
+        <div class="col-6">
+            <h2 class="text-primary">Current accounts</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="CurrentAccount" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create</a>
+        </div>
+
+    </div>
+<table class="table table-bordered table-striped text-center">
+    <thead>
+        <tr>
+
+         <th>Id Card Client</th>
+         <th>Current account</th>
+         <th>Account Balance</th>
+         <th>Valuta</th>
+         <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+         <tr>
+            <td>@item.IdCardClient</td>
+            <td>@item.CurrentAccountNumber</td>
+            <td>@item.AccountBalance</td>
+            <td>@item.Valuta</td>
+            <td>
+                <div class="btn-group w-75" role="group" >
+                            <a asp-controller="CurrentAccount" asp-action="Edit" asp-route-id="@item.IdAccount" class="btn btn-primary mx-2">Edit <i class="bi bi-pencil-square"></i> </a>
+                            <a class="btn btn-danger mx-2" asp-controller="CurrentAccount" asp-action="Delete" asp-route-id="@item.IdAccount">Delete <i class="bi bi-trash"></i> </a>
+
+                </div>
+
+            </td>
+
+         </tr>
+            
+        }
+
+
+    </tbody>
+
+</table>
+</div>

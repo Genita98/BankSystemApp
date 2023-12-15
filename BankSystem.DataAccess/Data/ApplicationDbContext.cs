@@ -10,15 +10,14 @@ namespace BankSystemApp.DataAcces.Data
         {
 
         }
-        public DbSet<Client> Clients { get; set; }  
+        public DbSet<Client> Clients { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Client>().HasData(
-                new Client { Id=1,Name="Genita",Surname="Azizi",Address="Gjilan",Email="genitaaa98@gmail.com",PhoneNumber="045513622"},
-                new Client { Id =2, Name = "Greta", Surname = "Azizi", Address = "Gjilan", Email = "greta.azizi@gmail.com", PhoneNumber = "045683797" }
+        public DbSet<CurrentAccount> CurrentAccount { get; set; }
 
-                );
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{ 
+        //}
+
+
     }
 }

@@ -9,14 +9,14 @@ namespace BankSystemApp.Controllers
 {
     public class ClientController : Controller
     {
-        private readonly IClientRepository _ClientRepo;
-        public ClientController(IClientRepository db)
+        private readonly IUnitOfWork _IUnitOFWork;
+        public ClientController(IUnitOfWork unitOfWork)
         {
-            _ClientRepo = db;
+            _IUnitOFWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Client> clientsContext = _ClientRepo.GetAll().ToList();
+            List<Client> clientsContext = _IUnitOFWork.Client.GetAll().ToList();
             return View(clientsContext);
         }
 
@@ -30,8 +30,8 @@ namespace BankSystemApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _ClientRepo.Add(obj);
-                _ClientRepo.Save();
+                _IUnitOFWork.Client.Add(obj);
+                _IUnitOFWork.Save();
                 TempData["success"] = "Client added successfully!";
                 return RedirectToAction("Index");
             }
@@ -53,7 +53,7 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
-            Client clientFromDb = _ClientRepo.Get(u => u.Id == id);
+            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.IdCardClient == id);
             if(clientFromDb == null)
             {
                 return NotFound();
@@ -67,8 +67,8 @@ namespace BankSystemApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _ClientRepo.Update(obj);
-                _ClientRepo.Save();
+                _IUnitOFWork.Client.Update(obj);
+                _IUnitOFWork.Save();
                 TempData["success"] = "Client updated successfully!";
                 return RedirectToAction("Index");
             }
@@ -99,7 +99,7 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
-            Client clientFromDb = _ClientRepo.Get(u => u.Id == id);
+            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.IdCardClient == id);
             if (clientFromDb == null)
             {
                 return NotFound();
@@ -116,7 +116,7 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
-            Client clientFromDb = _ClientRepo.Get(u => u.Id == id);
+            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.IdCardClient == id);
 
             if (clientFromDb == null)
             {
@@ -124,8 +124,8 @@ namespace BankSystemApp.Controllers
             }
             if (ModelState.IsValid)
             {
-                _ClientRepo.Remove(clientFromDb);
-                _ClientRepo.Save();
+                _IUnitOFWork.Client.Remove(clientFromDb);
+                _IUnitOFWork.Save();
                 TempData["success"] = "Client deleted successfully!";
                 return RedirectToAction("Index");
             }
