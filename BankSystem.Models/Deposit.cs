@@ -16,7 +16,7 @@ namespace BankSystem.Models
         public string CurrentAccountNumber { get; set; }
 
         [ForeignKey("CurrentAccountNumber")]
-        public CurrentAccount ?CurrentAccount { get; set; }
+        public CurrentAccount CurrentAccount { get; set; }
         public double Amount { get; set; }
         public DateTime TransactionDate { get; set; }
     }

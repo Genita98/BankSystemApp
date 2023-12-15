@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BankSystem.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateEverythingAndSeedTables : Migration
+    public partial class AddEverythingAndSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

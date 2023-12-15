@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankSystem.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231215194947_CreateEverythingAndSeedTables")]
-    partial class CreateEverythingAndSeedTables
+    [Migration("20231215200659_AddEverythingAndSeed")]
+    partial class AddEverythingAndSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
