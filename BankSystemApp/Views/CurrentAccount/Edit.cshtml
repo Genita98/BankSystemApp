@@ -1,5 +1,6 @@
 ﻿@model CurrentAccount
 
+
 <form method="post">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
@@ -9,13 +10,20 @@
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="IdCardClient"></label>
-            <input asp-for="IdCardClient" class="form-control" />
+            <select asp-for="IdCardClient" class="form-control form-select" asp-items="ViewBag.ClientList">
+                <option disabled selected id="idCardClient"> </option>
+            </select>
             <span asp-validation-for="IdCardClient" class="text-danger"></span>
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="Valuta"></label>
             <input asp-for="Valuta" class="form-control" />
             <span asp-validation-for="Valuta" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label class="p-0" asp-for="CurrentAccountNumber"></label>
+            <input asp-for="CurrentAccountNumber" class="form-control" id="currentAccountNumber" readonly />
+
         </div>
 
         <div class="row">

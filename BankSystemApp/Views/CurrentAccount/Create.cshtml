@@ -9,19 +9,19 @@
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="IdCardClient"></label>
-            <select asp-for="IdCardClient" asp-items="ViewBag.ClientList" class="form-select form-control">
-                <option disabled selected> -- Select client -- </option>
+            <select asp-for="IdCardClient" asp-items="ViewBag.ClientList" class="form-select form-control" >
+                <option disabled selected id="idCardClient" oninput="generateCurrentAccountNumber()"> -- Select client -- </option>
             </select>
             <span asp-validation-for="IdCardClient" class="text-danger"></span>
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="Valuta"></label>
-            <input asp-for="Valuta" class="form-control" />
+            <input asp-for="Valuta" id="valuta" class="form-control" oninput="generateCurrentAccountNumber()" />
             <span asp-validation-for="Valuta" class="text-danger"></span>
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="CurrentAccountNumber"></label>
-            <input asp-for="CurrentAccountNumber" class="form-control"  />
+            <input asp-for="CurrentAccountNumber" class="form-control" id="currentAccountNumber" readonly />
            
         </div>
         
@@ -44,3 +44,24 @@
     <partial name="_ValidationScriptsPartial"/>
     }
 }
+
+<script>
+    function generateCurrentAccountNumber() {
+        // Get the values from the input fields
+        var idCardClient = document.getElementById('idCardClient').value;
+        var valuta = document.getElementById('valuta').value;
+
+        // Get the selected option
+        var baseString = idCardClient.charAt(23) + valuta.charAt(0);
+        // Generate random digits
+        var randomDigits = Math.floor(Math.random() * 10000000000000).toString();
+
+        // Combine the base string with random digits
+        
+        var prefix = "13";
+        var currentAccountNumber = prefix.concat(baseString, randomDigits);
+
+        // Update the Current Account Number field
+        document.getElementById('currentAccountNumber').value = currentAccountNumber;
+    }
+</script>

@@ -61,6 +61,12 @@ namespace BankSystemApp.Controllers
             {
                 return NotFound();
             }
+            IEnumerable<SelectListItem> ClientList = _IUnitOFWork.Client.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.IdCardClient.ToString(),
+                Value = u.IdCardClient.ToString()
+            });
+            ViewBag.ClientList = ClientList;
             return View(currentAccountFromDb);
         }
 
