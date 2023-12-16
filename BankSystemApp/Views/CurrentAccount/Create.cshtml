@@ -8,11 +8,11 @@
             <hr/>
         </div>
         <div class="mb-3 row">
-            <label class="p-0" asp-for="IdCardClient"></label>
-            <select asp-for="IdCardClient" asp-items="ViewBag.ClientList" class="form-select form-control" >
+            <label class="p-0" asp-for="ClientId"></label>
+            <select asp-for="ClientId" asp-items="ViewBag.ClientList" class="form-select form-control" >
                 <option disabled selected id="idCardClient" oninput="generateCurrentAccountNumber()"> -- Select client -- </option>
             </select>
-            <span asp-validation-for="IdCardClient" class="text-danger"></span>
+            <span asp-validation-for="ClientId" class="text-danger"></span>
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="Valuta"></label>

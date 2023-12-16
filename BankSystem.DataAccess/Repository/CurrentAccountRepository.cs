@@ -1,6 +1,7 @@
 ﻿using BankSystem.DataAccess.Repository.IRepository;
 using BankSystem.Models;
 using BankSystemApp.DataAcces.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;

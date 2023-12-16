@@ -27,14 +27,14 @@
         @foreach (var item in Model)
         {
          <tr>
-            <td>@item.IdCardClient</td>
+            <td>@item.Client?.IdCardClient</td>
             <td>@item.CurrentAccountNumber</td>
             <td>@item.AccountBalance</td>
             <td>@item.Valuta</td>
             <td>
                 <div class="btn-group w-75" role="group" >
-                            <a asp-controller="CurrentAccount" asp-action="Edit" asp-route-id="@item.CurrentAccountNumber" class="btn btn-primary mx-2">Edit <i class="bi bi-pencil-square"></i> </a>
-                            <a class="btn btn-danger mx-2" asp-controller="CurrentAccount" asp-action="Delete" asp-route-id="@item.CurrentAccountNumber">Delete <i class="bi bi-trash"></i> </a>
+                            <a asp-controller="CurrentAccount" asp-action="Edit" asp-route-id="@item.AccountId" class="btn btn-primary mx-2">Edit <i class="bi bi-pencil-square"></i> </a>
+                            <a class="btn btn-danger mx-2" asp-controller="CurrentAccount" asp-action="Delete" asp-route-id="@item.AccountId">Delete <i class="bi bi-trash"></i> </a>
 
                 </div>
 

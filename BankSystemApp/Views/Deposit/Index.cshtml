@@ -1,0 +1,44 @@
+﻿@model List<Deposit>
+<partial name="_Notifications" />
+
+<div class="container">
+    <div class="row pt-4 pb-4">
+        <div class="col-6">
+            <h2 class="text-primary">Current accounts</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Deposit" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Create</a>
+        </div>
+
+    </div>
+<table class="table table-bordered table-striped text-center">
+    <thead>
+        <tr>
+
+         <th>Current account</th>
+         <th>Deposit amount</th>
+         <th>Account Balance</th>
+         <th>Transaction date</th>
+         <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+         <tr>
+            <td>@item.CurrentAccount?.CurrentAccountNumber</td>
+            <td>@item.Amount</td>
+             <td>@item.CurrentAccount?.AccountBalance</td>
+            <td>@item.TransactionDate</td>
+
+
+         </tr>
+            
+        }
+
+
+    </tbody>
+
+</table>
+</div>

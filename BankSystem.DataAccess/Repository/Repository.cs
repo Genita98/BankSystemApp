@@ -34,10 +34,10 @@ namespace BankSystem.DataAccess.Repository
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             IQueryable<T> query = dbSet;
-            return query.ToList(); 
+            return query; 
         }
           public void Remove(T entity)
         {

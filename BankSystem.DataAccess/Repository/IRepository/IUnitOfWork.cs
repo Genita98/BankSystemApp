@@ -10,6 +10,10 @@ namespace BankSystem.DataAccess.Repository.IRepository
     {
         IClientRepository Client { get;  }
         ICurrentAccountRepository CurrentAccount { get; }
+        IDepositRepository Deposit { get; }
+
+        IWithdrawalRepository Withdrawal { get; }
+
 
         void Save();
 

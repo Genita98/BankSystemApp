@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankSystem.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231215200659_AddEverythingAndSeed")]
-    partial class AddEverythingAndSeed
+    [Migration("20231215213039_CreateEverything")]
+    partial class CreateEverything
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace BankSystem.DataAccess.Migrations
 
             modelBuilder.Entity("BankSystem.Models.Client", b =>
                 {
-                    b.Property<int>("IdCardClient")
+                    b.Property<int>("ClientId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCardClient"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClientId"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -40,6 +40,9 @@ namespace BankSystem.DataAccess.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdCardClient")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -54,16 +57,17 @@ namespace BankSystem.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdCardClient");
+                    b.HasKey("ClientId");
 
                     b.ToTable("Clients");
 
                     b.HasData(
                         new
                         {
-                            IdCardClient = 11111111,
+                            ClientId = 1,
                             Address = "Prishtine",
                             Email = "bankaccount@gmail.com",
+                            IdCardClient = 11111111,
                             Name = "Bank",
                             PhoneNumber = "+38344111222",
                             Surname = "Account"
@@ -72,14 +76,21 @@ namespace BankSystem.DataAccess.Migrations
 
             modelBuilder.Entity("BankSystem.Models.CurrentAccount", b =>
                 {
-                    b.Property<string>("CurrentAccountNumber")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AccountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccountId"));
 
                     b.Property<double>("AccountBalance")
                         .HasColumnType("float");
 
-                    b.Property<int>("IdCardClient")
+                    b.Property<int>("ClientId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CurrentAccountNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Reservations")
                         .HasColumnType("float");
@@ -88,34 +99,33 @@ namespace BankSystem.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CurrentAccountNumber");
+                    b.HasKey("AccountId");
 
-                    b.HasIndex("IdCardClient");
+                    b.HasIndex("ClientId");
 
                     b.ToTable("CurrentAccount");
                 });
 
             modelBuilder.Entity("BankSystem.Models.Deposit", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DepositId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepositId"));
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
 
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
-                    b.Property<string>("CurrentAccountNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("DepositId");
 
-                    b.HasIndex("CurrentAccountNumber");
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Deposit");
                 });
@@ -124,7 +134,7 @@ namespace BankSystem.DataAccess.Migrations
                 {
                     b.HasOne("BankSystem.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("IdCardClient")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -135,7 +145,7 @@ namespace BankSystem.DataAccess.Migrations
                 {
                     b.HasOne("BankSystem.Models.CurrentAccount", "CurrentAccount")
                         .WithMany()
-                        .HasForeignKey("CurrentAccountNumber")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

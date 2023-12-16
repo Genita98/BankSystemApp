@@ -7,6 +7,8 @@ namespace BankSystem.Models
     {
         
         [Key]
+        public int ClientId { get; set; }
+        [Required]
         [DisplayName("Id Card")]
         public int IdCardClient { get; set; } 
 

@@ -2,6 +2,7 @@
 using BankSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankSystemApp.Controllers
 {
@@ -16,15 +17,17 @@ namespace BankSystemApp.Controllers
         }
         public IActionResult Index()
         {
-            List<CurrentAccount> currentAccounts = _IUnitOFWork.CurrentAccount.GetAll().ToList();
+            List<CurrentAccount> currentAccounts = _IUnitOFWork.CurrentAccount.GetAll().Include(x => x.Client).ToList();
+
+
             return View(currentAccounts); 
         }
         public IActionResult Create()
         {
-            IEnumerable<SelectListItem> ClientList = _IUnitOFWork.Client.GetAll().Select(u => new SelectListItem
+            IQueryable<SelectListItem> ClientList = _IUnitOFWork.Client.GetAll().Select(u => new SelectListItem
             {
                 Text = u.IdCardClient.ToString(),
-                Value = u.IdCardClient.ToString()
+                Value = u.ClientId.ToString()
             });
             ViewBag.ClientList = ClientList;
             return View();
@@ -49,14 +52,21 @@ namespace BankSystemApp.Controllers
 
 
 
-        public IActionResult Edit(string? Id)
+        public IActionResult Edit(int? Id)
         {
-            if (Id == null || Id == "")
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
 
-            CurrentAccount currentAccountFromDb = _IUnitOFWork.CurrentAccount.Get(u => u.CurrentAccountNumber == Id);
+            IQueryable<SelectListItem> ClientList = _IUnitOFWork.Client.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.IdCardClient.ToString(),
+                Value = u.ClientId.ToString()
+            });
+            ViewBag.ClientList = ClientList;
+
+            CurrentAccount currentAccountFromDb = _IUnitOFWork.CurrentAccount.Get(u => u.AccountId == Id);
             if (currentAccountFromDb == null)
             {
                 return NotFound();
@@ -76,6 +86,9 @@ namespace BankSystemApp.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
+
+
+
         }
 
 
@@ -85,14 +98,14 @@ namespace BankSystemApp.Controllers
         //delete part
 
 
-        public IActionResult Delete(string? Id)
+        public IActionResult Delete(int? Id)
         {
-            if (Id == null || Id == "")
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
 
-            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.CurrentAccountNumber == Id);
+            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.AccountId == Id);
             if (currentAccount == null)
             {
                 return NotFound();
@@ -102,14 +115,14 @@ namespace BankSystemApp.Controllers
 
         [HttpPost, ActionName("Delete")]
 
-        public IActionResult DeletePOST(string? Id)
+        public IActionResult DeletePOST(int? Id)
         {
-            if (Id == null || Id == "")
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
 
-            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.CurrentAccountNumber == Id);
+            CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.AccountId == Id);
 
             if (currentAccount == null)
             {

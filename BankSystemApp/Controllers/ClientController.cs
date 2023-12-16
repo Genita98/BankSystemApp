@@ -53,7 +53,7 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
-            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.IdCardClient == id);
+            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.ClientId == id);
             if(clientFromDb == null)
             {
                 return NotFound();
@@ -99,7 +99,7 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
-            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.IdCardClient == id);
+            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.ClientId == id);
             if (clientFromDb == null)
             {
                 return NotFound();
@@ -116,7 +116,7 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
-            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.IdCardClient == id);
+            Client clientFromDb = _IUnitOFWork.Client.Get(u => u.ClientId == id);
 
             if (clientFromDb == null)
             {

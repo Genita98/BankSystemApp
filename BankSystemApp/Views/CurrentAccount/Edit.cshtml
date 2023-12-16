@@ -9,11 +9,11 @@
             <hr/>
         </div>
         <div class="mb-3 row">
-            <label class="p-0" asp-for="IdCardClient"></label>
-            <select asp-for="IdCardClient" class="form-control form-select" asp-items="ViewBag.ClientList">
+            <label class="p-0" asp-for="ClientId"></label>
+            <select asp-for="ClientId" class="form-control form-select" asp-items="ViewBag.ClientList">
                 <option disabled selected id="idCardClient"> </option>
             </select>
-            <span asp-validation-for="IdCardClient" class="text-danger"></span>
+            <span asp-validation-for="ClientId" class="text-danger"></span>
         </div>
         <div class="mb-3 row">
             <label class="p-0" asp-for="Valuta"></label>

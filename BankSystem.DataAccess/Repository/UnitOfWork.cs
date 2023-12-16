@@ -15,11 +15,16 @@ namespace BankSystem.DataAccess.Repository
         public IClientRepository Client { get; private set; }
 
         public ICurrentAccountRepository CurrentAccount { get; private set; }
+        public IDepositRepository Deposit { get; private set; }
+
+        public IWithdrawalRepository Withdrawal { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Client = new ClientRepository(_db);
             CurrentAccount = new CurrentAccountRepository(_db);
+            Deposit = new DepositRepository(_db);
+            Withdrawal = new WithdrawalRepository(_db);
         }
 
         public void Save()
