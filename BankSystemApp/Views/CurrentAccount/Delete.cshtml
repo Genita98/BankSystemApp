@@ -1,35 +1,43 @@
 ﻿@model CurrentAccount
 
-<form method="post">
-    <div class="border p-3 mt-4">
-        <div class="row pb-2">
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Delete Current Account</h2>
+            </div>
+        </div>
+    </div>
+    <form method="post" class="row p-4">
+        <div class="border p-3">
+         <input asp-for="AccountId" hidden/>
 
-            <h2 class="text-primary">Delete Current account</h2>
-            <hr />
+         <div class="form-floating py-2 col-12">
+                <select asp-for="ClientId" asp-items="ViewBag.ClientList" class="form-select form-control border-0 shadow" disabled>
+                    <option disabled selected id="idCardClient" oninput="generateCurrentAccountNumber()" class="ms-2"> -- Select client -- </option>
+                </select>            <label class="p-0 ms-2" asp-for="ClientId"></label>
         </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="ClientId"></label>
-            <input asp-for="ClientId" class="form-control" disabled />
+         <div class="form-floating py-2 col-12">
+            <input asp-for="Valuta" class="form-control shadow border-0" disabled />
+            <label class="p-0 ms-2" asp-for="Valuta"></label>
         </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="Valuta"></label>
-            <input asp-for="Valuta" class="form-control" disabled />
-        </div>
-        
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="CurrentAccountNumber" class="form-control  border-0 shadow" id="currentAccountNumber" readonly />
+                    <label class="p-0 ms-2" asp-for="CurrentAccountNumber"></label>
 
+                </div>
         <div class="row">
             <div class="col-6 col-md-3">
                 <button type="submit" class="btn btn-danger form-control">Delete</button>
             </div>
-
             <div class="col-6 col-md-3">
-                <a asp-controller="CurrentAccount" asp-action="Index" class="btn btn-outline-secondary  form-control">Back</a>
+                <a asp-controller="CurrentAccount" asp-action="Index" class="btn btn-outline-primary  form-control">Back</a>
             </div>
         </div>
     </div>
 
 </form>
-
+</div>
 @section Scripts {
     @{
         <partial name="_ValidationScriptsPartial" />

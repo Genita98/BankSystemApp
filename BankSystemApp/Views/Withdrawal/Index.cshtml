@@ -1,13 +1,13 @@
-﻿@model List<Deposit>
+﻿@model List<Withdrawal>
 <partial name="_Notifications" />
 
 <div class="container">
     <div class="row pt-4 pb-4">
         <div class="col-6">
-            <h2 class="text-primary">Deposits</h2>
+            <h2 class="text-primary">Withdrawals</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="Deposit" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Make a deposit</a>
+            <a asp-controller="Withdrawal" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Make a withdrawal</a>
         </div>
 
     </div>
@@ -16,7 +16,7 @@
         <tr>
 
          <th>Current account</th>
-         <th>Deposit amount</th>
+         <th>Withdrawal amount</th>
          <th>Account Balance</th>
          <th>Transaction date</th>
         </tr>

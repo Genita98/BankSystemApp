@@ -1,44 +1,49 @@
 ﻿@model CurrentAccount
 
-
-<form method="post">
-    <div class="border p-3 mt-4">
-        <div class="row pb-2">
-
-            <h2 class="text-primary">Edit Current account</h2>
-            <hr/>
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="ClientId"></label>
-            <select asp-for="ClientId" class="form-control form-select" asp-items="ViewBag.ClientList">
-                <option disabled selected id="idCardClient"> </option>
-            </select>
-            <span asp-validation-for="ClientId" class="text-danger"></span>
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="Valuta"></label>
-            <input asp-for="Valuta" class="form-control" />
-            <span asp-validation-for="Valuta" class="text-danger"></span>
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="CurrentAccountNumber"></label>
-            <input asp-for="CurrentAccountNumber" class="form-control" id="currentAccountNumber" readonly />
-
-        </div>
-
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
         <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Edit Current Account</h2>
+            </div>
+        </div>
+    </div>
+    <form method="post" class="row p-4">
+        <input asp-for="AccountId" hidden/>
+        <div class="border p-3">
+            <div class="form-floating py-2 col-12">
+                <select asp-for="ClientId" asp-items="ViewBag.ClientList" class="form-select form-control border-0 shadow">
+                    <option disabled selected id="idCardClient" oninput="generateCurrentAccountNumber()" class="ms-2"> -- Select client -- </option>
+                </select>
+                <label class="p-0" asp-for="ClientId"></label>
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="Valuta" id="valuta" class="form-control border-0 shadow" oninput="generateCurrentAccountNumber()" />
+                <label class="p-0 ms-2" asp-for="Valuta"></label>
+                <span asp-validation-for="Valuta" class="text-danger"></span>
+            </div>
+            <div class="form-floating py-2 col-12">
+                <input asp-for="CurrentAccountNumber" class="form-control  border-0 shadow" id="currentAccountNumber" readonly />
+                <label class="p-0 ms-2" asp-for="CurrentAccountNumber"></label>
+
+            </div>
+
+
+            <div class="row">
             <div class="col-6 col-md-3">
                  <button type ="submit" class="btn btn-primary form-control">Edit</button>
             </div>
 
             <div class="col-6 col-md-3">
-                <a asp-controller="CurrentAccount" asp-action="Index" class="btn btn-outline-secondary  form-control">Back</a>
+                <a asp-controller="CurrentAccount" asp-action="Index" class="btn btn-outline-primary  form-control">Back</a>
             </div>
         </div>
     </div>
 
 </form>
-
+</div>
+</div>
 @section Scripts {
     @{
         <partial name="_ValidationScriptsPartial"/>

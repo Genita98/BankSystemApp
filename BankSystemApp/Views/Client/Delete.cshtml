@@ -1,40 +1,45 @@
 ﻿@model Client
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Delete Client</h2>
 
-<form method="post">
+            </div>
+        </div>
+    </div>
+
+ <div class="card-body p-4">
+        <form method="post"class="row p-4">
     <div class="border p-3 mt-4">
-        <div class="row pb-2">
 
-            <h2 class="text-primary">Delete Client</h2>
-            <hr />
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="IdCardClient"></label>
-            <input asp-for="IdCardClient" class="form-control" disabled />
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" disabled />
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="Surname"></label>
-            <input asp-for="Surname" class="form-control" disabled />
 
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="Address"></label>
-            <input asp-for="Address" class="form-control" disabled />
+        <input asp-for="ClientId" hidden />
 
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="PhoneNumber"></label>
-            <input asp-for="PhoneNumber" class="form-control" disabled />
-
-        </div>
-        <div class="mb-3 row">
-            <label class="p-0" asp-for="Email"></label>
-            <input asp-for="Email" class="form-control" disabled />
-
-        </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="IdCardClient" class="form-control border-0 shadow" disabled />
+                    <label class="p-0" asp-for="IdCardClient" class="ms-2"></label>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Name" class="form-control border-0 shadow" disabled/>
+                    <label class="p-0" asp-for="Name" class="ms-2"></label>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Surname" class="form-control border-0 shadow" disabled />
+                    <label class="p-0" asp-for="Surname" class="ms-2"></label>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Address" class="form-control border-0 shadow" disabled />
+                    <label class="p-0" asp-for="Address" class="ms-2"></label>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="PhoneNumber" class="form-control border-0 shadow" disabled />
+                    <label class="p-0" asp-for="PhoneNumber" class="ms-2"></label>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Email" class="form-control border-0 shadow" disabled />
+                    <label class="p-0" asp-for="Email" class="ms-2"></label>
+                </div>
 
         <div class="row">
             <div class="col-6 col-md-3">
@@ -42,13 +47,14 @@
             </div>
 
             <div class="col-6 col-md-3">
-                <a asp-controller="Client" asp-action="Index" class="btn btn-outline-secondary  form-control">Back</a>
+                <a asp-controller="Client" asp-action="Index" class="btn btn-outline-primary  form-control">Back</a>
             </div>
         </div>
     </div>
 
-</form>
-
+     </form>
+    </div>
+</div>
 @section Scripts {
     @{
         <partial name="_ValidationScriptsPartial" />

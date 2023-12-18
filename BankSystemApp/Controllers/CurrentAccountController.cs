@@ -1,5 +1,6 @@
 ﻿using BankSystem.DataAccess.Repository.IRepository;
 using BankSystem.Models;
+using BankSystemApp.DataAcces.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -105,6 +106,12 @@ namespace BankSystemApp.Controllers
                 return NotFound();
             }
 
+            IQueryable<SelectListItem> ClientList = _IUnitOFWork.Client.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.IdCardClient.ToString(),
+                Value = u.ClientId.ToString()
+            });
+            ViewBag.ClientList = ClientList;
             CurrentAccount currentAccount = _IUnitOFWork.CurrentAccount.Get(u => u.AccountId == Id);
             if (currentAccount == null)
             {

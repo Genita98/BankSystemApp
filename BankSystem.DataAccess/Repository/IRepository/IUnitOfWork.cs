@@ -16,6 +16,6 @@ namespace BankSystem.DataAccess.Repository.IRepository
 
 
         void Save();
-
+        void UpdateEntity<TEntity>(TEntity entity) where TEntity : class;
     }
 }

@@ -3,6 +3,7 @@ using BankSystem.DataAccess.Repository.IRepository;
 using BankSystem.Models;
 using BankSystemApp.DataAcces.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
 namespace BankSystemApp.Controllers
@@ -61,12 +62,15 @@ namespace BankSystemApp.Controllers
             return View(clientFromDb);
         }
 
-        [HttpPost]
+        [HttpPost,ActionName("Edit")]
 
-        public IActionResult Edit(Client obj)
+        public IActionResult EditPOST(Client obj)
         {
+
             if (ModelState.IsValid)
             {
+                //_IUnitOFWork.UpdateEntity(obj);
+
                 _IUnitOFWork.Client.Update(obj);
                 _IUnitOFWork.Save();
                 TempData["success"] = "Client updated successfully!";

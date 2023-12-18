@@ -1,5 +1,6 @@
 ﻿using BankSystem.DataAccess.Repository.IRepository;
 using BankSystemApp.DataAcces.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +32,11 @@ namespace BankSystem.DataAccess.Repository
         {
             _db.SaveChanges();
         }
+        public void UpdateEntity<TEntity>(TEntity entity) where TEntity : class
+        {
+            var entry = _db.Entry(entity);
+            entry.State = EntityState.Modified;
+        }
+
     }
 }

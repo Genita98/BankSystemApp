@@ -10,6 +10,7 @@ namespace BankSystem.Models
 {
     public class Withdrawal
     {
+        [Key]
         public int WithdrawalId { get; set; }
         [Required]
         public int AccountId { get; set; }

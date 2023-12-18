@@ -26,7 +26,10 @@ namespace BankSystem.DataAccess.Repository
         {
             _db.Add(entity);
         }
-
+        public void Entry(T entity)
+        {
+            _db.Entry(entity);
+        }
         public T Get(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = dbSet;
