@@ -1,12 +1,6 @@
 ﻿using BankSystem.DataAccess.Repository.IRepository;
 using BankSystem.Models;
 using BankSystemApp.DataAcces.Data;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankSystem.DataAccess.Repository
 {
